@@ -1,0 +1,35 @@
+@model List<BusinessManager.Models.MenuDataModel>
+
+@{
+    ViewBag.Title = "Menu Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Menu</h2>
+
+<h1 class="block">Administracion de Menu</h1>
+<div class="column1-unit">
+    <table>
+        <tr>
+            
+	<th class="top" scope="col">Name</th>
+	<th class="top" scope="col">URL</th>            
+            <th class="top" scope="col"></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+	<td scope="row">@item.Name</td>
+	<td scope="row">@item.URL</td>                
+                <td>@Html.ActionLink("Edit", "Edit", new { id=item.ID })</td>
+            </tr>
+        }
+    </table>
+    
+</div>
+<hr class="clear-contentunit" />
+
+<div>
+    @Html.ActionLink("Crear Menu", "Create")
+</div>

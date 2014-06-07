@@ -1,0 +1,24 @@
+﻿@model WebSite.Models.CampaignUIModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Campaigns</h2>
+
+<table>
+@foreach (var item in Model.Campaigns)
+{
+    <tr>
+        <td style="width:400px;">@item.Name</td>
+        <td> 
+            @if(item.DateStarted == DateTime.MinValue ) { 
+                @Html.ActionLink("Start", "Start", new { id=item.ID }) 
+            }else{
+                @Html.ActionLink("View", "View", new { id=item.ID }) 
+            }
+        </td>    
+    </tr>
+}
+</table>

@@ -1,0 +1,35 @@
+@model List<BusinessManager.Models.ActivityDataModel>
+
+@{
+    ViewBag.Title = "Actividad Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Actividad</h2>
+
+<h1 class="block">Administracion de Actividad</h1>
+<div class="column1-unit">
+    <table>
+        <tr>
+            
+	<th class="top" scope="col">Name</th>
+	<th class="top" scope="col">WorkflowID</th>            
+            <th class="top" scope="col"></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+	<td scope="row">@item.Name</td>
+	<td scope="row">@item.WorkflowID</td>                
+                <td>@Html.ActionLink("Edit", "Edit", new { id=item.ID })</td>
+            </tr>
+        }
+    </table>
+    
+</div>
+<hr class="clear-contentunit" />
+
+<div>
+    @Html.ActionLink("Crear Actividad", "Create")
+</div>

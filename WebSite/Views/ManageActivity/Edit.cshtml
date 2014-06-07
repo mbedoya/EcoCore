@@ -1,0 +1,99 @@
+@using System.Web.Optimization
+
+@model BusinessManager.Models.ActivityDataModel
+
+@{
+    ViewBag.Title = "Actividad Edicion";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Edicion de Actividad</h2>
+
+@using ( Html.BeginForm(null, null, FormMethod.Post ,new { enctype = "multipart/form-data" })) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Actividad</legend>
+
+        
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.Name)
+	</div>
+	<div class="editor-field">
+	 @Html.EditorFor(model => model.Name, new { maxLength = 80 })
+	 @Html.ValidationMessageFor(model => model.Name)
+	</div>
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.OwnerID)
+	</div>
+	<div class="editor-field">
+	 @Html.EditorFor(model => model.OwnerID, new { maxLength = 10})
+	 @Html.ValidationMessageFor(model => model.OwnerID)
+	</div>
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.CreatedBy)
+	</div>
+	<div class="editor-field">
+	 @Html.DisplayFor(model => model.CreatedBy, new { maxLength = 10})
+	 @Html.ValidationMessageFor(model => model.CreatedBy)
+	</div>
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.DateCreated)
+	</div>
+	<div class="editor-field">
+	 @Html.DisplayFor(model => model.DateCreated, new { maxLength = 10})
+	 @Html.ValidationMessageFor(model => model.DateCreated)
+	</div>
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.WorkflowID)
+	</div>
+	<div class="editor-field">
+	 @Html.EditorFor(model => model.WorkflowID, new { maxLength = 10})
+	 @Html.ValidationMessageFor(model => model.WorkflowID)
+	</div>
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.ParentActivityID)
+	</div>
+	<div class="editor-field">
+	 @Html.EditorFor(model => model.ParentActivityID, new { maxLength = 10})
+	 @Html.ValidationMessageFor(model => model.ParentActivityID)
+	</div>
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.Approved)
+	</div>
+	<div class="editor-field">
+	 @Html.DisplayFor(model => model.Approved, new { maxLength = 10})
+	 @Html.ValidationMessageFor(model => model.Approved)
+	</div>
+	 @Html.HiddenFor(model => model.CreatedBy)
+	 @Html.HiddenFor(model => model.DateCreated)
+	 @Html.HiddenFor(model => model.Approved)
+
+        @Html.HiddenFor(model => model.ID)
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts{ 
+
+    @Scripts.Render("~/Scripts/jquery.js")
+    @Scripts.Render("~/Scripts/ckeditor/ckeditor.js") 
+    @Scripts.Render("~/Scripts/jquery.fancybox.js")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.fancybox').fancybox();
+        });
+    </script>
+}
+
+@section styles{ 
+    @Styles.Render("~/Content/css/jquery.fancybox.css")
+}

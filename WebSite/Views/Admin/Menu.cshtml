@@ -1,0 +1,9 @@
+﻿@model List<BusinessManager.Models.MenuDataModel>
+
+@foreach (var item in Model)
+{
+     <!-- Navigation item -->
+    <ul>
+        <li><a href="@item.URL">@item.Name</a></li>
+    </ul>
+}

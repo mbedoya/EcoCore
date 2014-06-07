@@ -1,0 +1,33 @@
+@model List<BusinessManager.Models.WorkflowDataModel>
+
+@{
+    ViewBag.Title = "Flujo de trabajo Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Flujo de trabajo</h2>
+
+<h1 class="block">Administracion de Flujo de trabajo</h1>
+<div class="column1-unit">
+    <table>
+        <tr>
+            
+	<th class="top" scope="col">Name</th>            
+            <th class="top" scope="col"></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+	<td scope="row">@item.Name</td>                
+                <td>@Html.ActionLink("Edit", "Edit", new { id=item.ID })</td>
+            </tr>
+        }
+    </table>
+    
+</div>
+<hr class="clear-contentunit" />
+
+<div>
+    @Html.ActionLink("Crear Flujo de trabajo", "Create")
+</div>

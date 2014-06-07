@@ -1,0 +1,92 @@
+@using System.Web.Optimization
+
+@model BusinessManager.Models.CampaignDataModel
+
+@{
+    ViewBag.Title = "Campana Edicion";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Edicion de Campana</h2>
+
+@using ( Html.BeginForm(null, null, FormMethod.Post ,new { enctype = "multipart/form-data" })) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend></legend>
+
+        
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.Name)
+	</div>
+	<div class="editor-field">
+	 @Html.EditorFor(model => model.Name, new { maxLength = 100 })
+	 @Html.ValidationMessageFor(model => model.Name)
+	</div>
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.WorkflowID)
+	</div>
+	<div class="editor-field">
+	 @Html.EditorFor(model => model.WorkflowID, new { maxLength = 10})
+	 @Html.ValidationMessageFor(model => model.WorkflowID)
+	</div>
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.DateCreated)
+	</div>
+	<div class="editor-field">
+	 @Html.DisplayFor(model => model.DateCreated, new { maxLength = 10})
+	 @Html.ValidationMessageFor(model => model.DateCreated)
+	</div>
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.CreatedBy)
+	</div>
+	<div class="editor-field">
+	 @Html.DisplayFor(model => model.CreatedBy, new { maxLength = 10})
+	 @Html.ValidationMessageFor(model => model.CreatedBy)
+	</div>
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.DateStarted)
+	</div>
+	<div class="editor-field">
+	 @Html.DisplayFor(model => model.DateStarted, new { maxLength = 10})
+	 @Html.ValidationMessageFor(model => model.DateStarted)
+	</div>
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.OwnerID)
+	</div>
+	<div class="editor-field">
+	 @Html.EditorFor(model => model.OwnerID, new { maxLength = 10})
+	 @Html.ValidationMessageFor(model => model.OwnerID)
+	</div>
+	 @Html.HiddenFor(model => model.DateCreated)
+	 @Html.HiddenFor(model => model.CreatedBy)
+	 @Html.HiddenFor(model => model.DateStarted)
+
+        @Html.HiddenFor(model => model.ID)
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts{ 
+
+    @Scripts.Render("~/Scripts/jquery.js")
+    @Scripts.Render("~/Scripts/ckeditor/ckeditor.js") 
+    @Scripts.Render("~/Scripts/jquery.fancybox.js")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.fancybox').fancybox();
+        });
+    </script>
+}
+
+@section styles{ 
+    @Styles.Render("~/Content/css/jquery.fancybox.css")
+}
