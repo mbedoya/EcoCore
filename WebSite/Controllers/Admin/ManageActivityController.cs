@@ -13,9 +13,9 @@ namespace WebSite.Controllers.Admin
         //
         // GET: /ManageActivity/
 
-        public ActionResult Index()
+        public ActionResult Index(int id=0)
         {
-            return View(ActivityBO.GetInstance().GetAll());
+            return View(ActivityBO.GetInstance().GetAll(id));
         }
 
         public ActionResult Edit(int id)

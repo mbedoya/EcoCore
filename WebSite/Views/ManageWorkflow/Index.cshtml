@@ -13,13 +13,17 @@
         <tr>
             
 	<th class="top" scope="col">Name</th>            
+            <th class="top">Activities</th>
             <th class="top" scope="col"></th>
         </tr>
         @foreach (var item in Model)
         {
             <tr>
                 
-	<td scope="row">@item.Name</td>                
+	            <td scope="row">@item.Name</td>                
+                <td>
+                    @Html.Action("ActivityChildrenField", new { id = @item.ID })
+                </td>
                 <td>@Html.ActionLink("Edit", "Edit", new { id=item.ID })</td>
             </tr>
         }

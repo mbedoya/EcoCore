@@ -59,5 +59,33 @@ namespace BusinessManager.Data
 
             return activity;           
         }
+
+        public static int GetActivityCount(int id)
+        {
+            int count = 0;
+
+            MySqlConnection connection = new MySqlConnection(ConfigurationManager.AppSettings[BusinessUtilies.Const.Database.AppSetting]);
+            MySqlDataAdapter adapter = new MySqlDataAdapter("GetWorkflowActivityCount", connection);
+            MySqlParameter paramID = new MySqlParameter("pId", id);
+            paramID.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adapter.SelectCommand.Parameters.Add(paramID);
+
+            DataTable results = new DataTable();
+
+            adapter.Fill(results);
+
+            if (results.Rows.Count > 0)
+            {
+                DataRow item = results.Rows[0];                
+
+                if (item["count"].GetType() != typeof(DBNull))
+                {
+                    count = Convert.ToInt32(item["count"]);
+                }                
+            }
+
+            return count;       
+        }
     }
 }

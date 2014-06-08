@@ -10,12 +10,12 @@ namespace BusinessManager.Business
 {
     public class BaseActivityBO
     {
-        public List<ActivityDataModel> GetAll()
+        public virtual List<ActivityDataModel> GetAll(int id)
         {
             return ActivityDAL.GetAll();
         }
 
-        public ActivityDataModel Get(int id)
+        public virtual ActivityDataModel Get(int id)
         {
             return ActivityDAL.Get(id);
         }

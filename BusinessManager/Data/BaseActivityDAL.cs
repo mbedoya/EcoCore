@@ -24,43 +24,43 @@ namespace BusinessManager.Data
 
             foreach (DataRow item in results.Rows)
             {
-                ActivityDataModel activity = new ActivityDataModel();                
-                
-	 if (item["ID"].GetType() != typeof(DBNull))
-	 {
-	 activity.ID = Convert.ToInt32(item["ID"]);
-	 }
-	 if (item["Name"].GetType() != typeof(DBNull))
-	 {
-	 activity.Name = Convert.ToString(item["Name"]);
-	 }
-	 if (item["OwnerID"].GetType() != typeof(DBNull))
-	 {
-	 activity.OwnerID = Convert.ToInt32(item["OwnerID"]);
-	 }
-	 if (item["CreatedBy"].GetType() != typeof(DBNull))
-	 {
-	 activity.CreatedBy = Convert.ToInt32(item["CreatedBy"]);
-	 }
-	 if (item["DateCreated"].GetType() != typeof(DBNull))
-	 {
-	 activity.DateCreated = Convert.ToDateTime(item["DateCreated"]);
-	 }
-	 if (item["WorkflowID"].GetType() != typeof(DBNull))
-	 {
-	 activity.WorkflowID = Convert.ToInt32(item["WorkflowID"]);
-	 }
-	 if (item["ParentActivityID"].GetType() != typeof(DBNull))
-	 {
-	 activity.ParentActivityID = Convert.ToInt32(item["ParentActivityID"]);
-	 }
-	 if (item["Approved"].GetType() != typeof(DBNull))
-	 {
-	 activity.Approved = Convert.ToBoolean(item["Approved"]);
-	 }
+                ActivityDataModel activity = new ActivityDataModel();
 
-                activitys.Add(activity);                 
-            }            
+                if (item["ID"].GetType() != typeof(DBNull))
+                {
+                    activity.ID = Convert.ToInt32(item["ID"]);
+                }
+                if (item["Name"].GetType() != typeof(DBNull))
+                {
+                    activity.Name = Convert.ToString(item["Name"]);
+                }
+                if (item["OwnerID"].GetType() != typeof(DBNull))
+                {
+                    activity.OwnerID = Convert.ToInt32(item["OwnerID"]);
+                }
+                if (item["CreatedBy"].GetType() != typeof(DBNull))
+                {
+                    activity.CreatedBy = Convert.ToInt32(item["CreatedBy"]);
+                }
+                if (item["DateCreated"].GetType() != typeof(DBNull))
+                {
+                    activity.DateCreated = Convert.ToDateTime(item["DateCreated"]);
+                }
+                if (item["WorkflowID"].GetType() != typeof(DBNull))
+                {
+                    activity.WorkflowID = Convert.ToInt32(item["WorkflowID"]);
+                }
+                if (item["ParentActivityID"].GetType() != typeof(DBNull))
+                {
+                    activity.ParentActivityID = Convert.ToInt32(item["ParentActivityID"]);
+                }
+                if (item["Approved"].GetType() != typeof(DBNull))
+                {
+                    activity.Approved = Convert.ToBoolean(item["Approved"]);
+                }
+
+                activitys.Add(activity);
+            }
 
             return activitys;
         }
@@ -80,43 +80,43 @@ namespace BusinessManager.Data
 
             adapter.Fill(results);
 
-            if(results.Rows.Count > 0)
+            if (results.Rows.Count > 0)
             {
                 DataRow item = results.Rows[0];
-                activity = new ActivityDataModel();                
-                
-	 if (item["ID"].GetType() != typeof(DBNull))
-	 {
-	 activity.ID = Convert.ToInt32(item["ID"]);
-	 }
-	 if (item["Name"].GetType() != typeof(DBNull))
-	 {
-	 activity.Name = Convert.ToString(item["Name"]);
-	 }
-	 if (item["OwnerID"].GetType() != typeof(DBNull))
-	 {
-	 activity.OwnerID = Convert.ToInt32(item["OwnerID"]);
-	 }
-	 if (item["CreatedBy"].GetType() != typeof(DBNull))
-	 {
-	 activity.CreatedBy = Convert.ToInt32(item["CreatedBy"]);
-	 }
-	 if (item["DateCreated"].GetType() != typeof(DBNull))
-	 {
-	 activity.DateCreated = Convert.ToDateTime(item["DateCreated"]);
-	 }
-	 if (item["WorkflowID"].GetType() != typeof(DBNull))
-	 {
-	 activity.WorkflowID = Convert.ToInt32(item["WorkflowID"]);
-	 }
-	 if (item["ParentActivityID"].GetType() != typeof(DBNull))
-	 {
-	 activity.ParentActivityID = Convert.ToInt32(item["ParentActivityID"]);
-	 }
-	 if (item["Approved"].GetType() != typeof(DBNull))
-	 {
-	 activity.Approved = Convert.ToBoolean(item["Approved"]);
-	 }                
+                activity = new ActivityDataModel();
+
+                if (item["ID"].GetType() != typeof(DBNull))
+                {
+                    activity.ID = Convert.ToInt32(item["ID"]);
+                }
+                if (item["Name"].GetType() != typeof(DBNull))
+                {
+                    activity.Name = Convert.ToString(item["Name"]);
+                }
+                if (item["OwnerID"].GetType() != typeof(DBNull))
+                {
+                    activity.OwnerID = Convert.ToInt32(item["OwnerID"]);
+                }
+                if (item["CreatedBy"].GetType() != typeof(DBNull))
+                {
+                    activity.CreatedBy = Convert.ToInt32(item["CreatedBy"]);
+                }
+                if (item["DateCreated"].GetType() != typeof(DBNull))
+                {
+                    activity.DateCreated = Convert.ToDateTime(item["DateCreated"]);
+                }
+                if (item["WorkflowID"].GetType() != typeof(DBNull))
+                {
+                    activity.WorkflowID = Convert.ToInt32(item["WorkflowID"]);
+                }
+                if (item["ParentActivityID"].GetType() != typeof(DBNull))
+                {
+                    activity.ParentActivityID = Convert.ToInt32(item["ParentActivityID"]);
+                }
+                if (item["Approved"].GetType() != typeof(DBNull))
+                {
+                    activity.Approved = Convert.ToBoolean(item["Approved"]);
+                }
             }
 
             return activity;
@@ -128,31 +128,31 @@ namespace BusinessManager.Data
             MySqlDataAdapter adapter = new MySqlDataAdapter("UpdateActivity", connection);
             adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
-            
-	 MySqlParameter paramID = new MySqlParameter("pID",activity.ID);
-	 paramID.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramID);
-	 MySqlParameter paramName = new MySqlParameter("pName",activity.Name);
-	 paramName.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramName);
-	 MySqlParameter paramOwnerID = new MySqlParameter("pOwnerID",activity.OwnerID);
-	 paramOwnerID.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramOwnerID);
-	 MySqlParameter paramCreatedBy = new MySqlParameter("pCreatedBy",activity.CreatedBy);
-	 paramCreatedBy.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramCreatedBy);
-	 MySqlParameter paramDateCreated = new MySqlParameter("pDateCreated",activity.DateCreated);
-	 paramDateCreated.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramDateCreated);
-	 MySqlParameter paramWorkflowID = new MySqlParameter("pWorkflowID",activity.WorkflowID);
-	 paramWorkflowID.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramWorkflowID);
-	 MySqlParameter paramParentActivityID = new MySqlParameter("pParentActivityID",activity.ParentActivityID);
-	 paramParentActivityID.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramParentActivityID);
-	 MySqlParameter paramApproved = new MySqlParameter("pApproved",activity.Approved);
-	 paramApproved.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramApproved);
+
+            MySqlParameter paramID = new MySqlParameter("pID", activity.ID);
+            paramID.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramID);
+            MySqlParameter paramName = new MySqlParameter("pName", activity.Name);
+            paramName.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramName);
+            MySqlParameter paramOwnerID = new MySqlParameter("pOwnerID", activity.OwnerID);
+            paramOwnerID.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramOwnerID);
+            MySqlParameter paramCreatedBy = new MySqlParameter("pCreatedBy", activity.CreatedBy);
+            paramCreatedBy.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramCreatedBy);
+            MySqlParameter paramDateCreated = new MySqlParameter("pDateCreated", activity.DateCreated);
+            paramDateCreated.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramDateCreated);
+            MySqlParameter paramWorkflowID = new MySqlParameter("pWorkflowID", activity.WorkflowID);
+            paramWorkflowID.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramWorkflowID);
+            MySqlParameter paramParentActivityID = new MySqlParameter("pParentActivityID", activity.ParentActivityID);
+            paramParentActivityID.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramParentActivityID);
+            MySqlParameter paramApproved = new MySqlParameter("pApproved", activity.Approved);
+            paramApproved.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramApproved);
 
             DataTable results = new DataTable();
             adapter.Fill(results);
@@ -161,34 +161,34 @@ namespace BusinessManager.Data
         public static void Create(ActivityDataModel activity)
         {
             MySqlConnection connection = new MySqlConnection(ConfigurationManager.AppSettings[BusinessUtilies.Const.Database.AppSetting]);
-            MySqlDataAdapter adapter = new MySqlDataAdapter("CreateActivity", connection);                        
+            MySqlDataAdapter adapter = new MySqlDataAdapter("CreateActivity", connection);
             adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
 
-            
-	 MySqlParameter paramID = new MySqlParameter("pID",activity.ID);
-	 paramID.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramID);
-	 MySqlParameter paramName = new MySqlParameter("pName",activity.Name);
-	 paramName.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramName);
-	 MySqlParameter paramOwnerID = new MySqlParameter("pOwnerID",activity.OwnerID);
-	 paramOwnerID.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramOwnerID);
-	 MySqlParameter paramCreatedBy = new MySqlParameter("pCreatedBy",activity.CreatedBy);
-	 paramCreatedBy.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramCreatedBy);
-	 MySqlParameter paramDateCreated = new MySqlParameter("pDateCreated",activity.DateCreated);
-	 paramDateCreated.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramDateCreated);
-	 MySqlParameter paramWorkflowID = new MySqlParameter("pWorkflowID",activity.WorkflowID);
-	 paramWorkflowID.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramWorkflowID);
-	 MySqlParameter paramParentActivityID = new MySqlParameter("pParentActivityID",activity.ParentActivityID);
-	 paramParentActivityID.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramParentActivityID);
-	 MySqlParameter paramApproved = new MySqlParameter("pApproved",activity.Approved);
-	 paramApproved.Direction = ParameterDirection.Input;
-	 adapter.SelectCommand.Parameters.Add(paramApproved);
+
+            MySqlParameter paramID = new MySqlParameter("pID", activity.ID);
+            paramID.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramID);
+            MySqlParameter paramName = new MySqlParameter("pName", activity.Name);
+            paramName.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramName);
+            MySqlParameter paramOwnerID = new MySqlParameter("pOwnerID", activity.OwnerID);
+            paramOwnerID.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramOwnerID);
+            MySqlParameter paramCreatedBy = new MySqlParameter("pCreatedBy", activity.CreatedBy);
+            paramCreatedBy.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramCreatedBy);
+            MySqlParameter paramDateCreated = new MySqlParameter("pDateCreated", activity.DateCreated);
+            paramDateCreated.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramDateCreated);
+            MySqlParameter paramWorkflowID = new MySqlParameter("pWorkflowID", activity.WorkflowID);
+            paramWorkflowID.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramWorkflowID);
+            MySqlParameter paramParentActivityID = new MySqlParameter("pParentActivityID", activity.ParentActivityID);
+            paramParentActivityID.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramParentActivityID);
+            MySqlParameter paramApproved = new MySqlParameter("pApproved", activity.Approved);
+            paramApproved.Direction = ParameterDirection.Input;
+            adapter.SelectCommand.Parameters.Add(paramApproved);
 
             DataTable results = new DataTable();
             adapter.Fill(results);

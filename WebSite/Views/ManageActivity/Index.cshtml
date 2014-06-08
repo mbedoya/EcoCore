@@ -19,9 +19,8 @@
         @foreach (var item in Model)
         {
             <tr>
-                
-	<td scope="row">@item.Name</td>
-	<td scope="row">@item.WorkflowID</td>                
+	            <td scope="row">@item.Name</td>
+	            <td scope="row">@item.WorkflowID</td>                
                 <td>@Html.ActionLink("Edit", "Edit", new { id=item.ID })</td>
             </tr>
         }

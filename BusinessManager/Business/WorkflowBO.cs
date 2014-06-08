@@ -23,6 +23,11 @@ namespace BusinessManager.Business
             return instance;
         }
 
+        public int GetActivityCount(int workflowID)
+        {
+            return WorkflowDAL.GetActivityCount(workflowID);
+        }
+
         public override void Create(WorkflowDataModel workflow)
         {
             if (!SecurityManager.SesionStarted())

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebSite.Models;
 
 namespace WebSite.Controllers.Admin
 {
@@ -42,6 +43,20 @@ namespace WebSite.Controllers.Admin
             WorkflowBO.GetInstance().Create(workflow);
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ActivityChildrenField(int id)
+        {
+            int count = WorkflowBO.GetInstance().GetActivityCount(id);
+
+            ChildrenFieldUIModel model = new ChildrenFieldUIModel()
+            {
+                ID = id,
+                Count = count,
+                ClassName = "Activity"
+            };
+
+            return View("ChildrenField", model);
         }
     }
 }

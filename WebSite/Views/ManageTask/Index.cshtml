@@ -1,0 +1,35 @@
+@model List<BusinessManager.Models.TaskDataModel>
+
+@{
+    ViewBag.Title = "Tarea Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Tarea</h2>
+
+<h1 class="block">Administracion de Tarea</h1>
+<div class="column1-unit">
+    <table>
+        <tr>
+            
+	<th class="top" scope="col">Name</th>
+	<th class="top" scope="col">AssignedTo</th>            
+            <th class="top" scope="col"></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+	<td scope="row">@item.Name</td>
+	<td scope="row">@item.AssignedTo</td>                
+                <td>@Html.ActionLink("Edit", "Edit", new { id=item.ID })</td>
+            </tr>
+        }
+    </table>
+    
+</div>
+<hr class="clear-contentunit" />
+
+<div>
+    @Html.ActionLink("Crear Tarea", "Create")
+</div>

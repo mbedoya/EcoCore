@@ -9,34 +9,43 @@
 
 <h2>Edicion de Flujo de trabajo</h2>
 
-@using ( Html.BeginForm(null, null, FormMethod.Post ,new { enctype = "multipart/form-data" })) {
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Flujo de trabajo</legend>
 
-        
-	<div class="editor-label">
-	 @Html.LabelFor(model => model.Name)
-	</div>
-	<div class="editor-field">
-	 @Html.EditorFor(model => model.Name, new { maxLength = 100 })
-	 @Html.ValidationMessageFor(model => model.Name)
-	</div>
-	<div class="editor-label">
-	 @Html.LabelFor(model => model.CreatedBy)
-	</div>
-	<div class="editor-field">
-	 @Html.DisplayFor(model => model.CreatedBy, new { maxLength = 10})
-	 @Html.ValidationMessageFor(model => model.CreatedBy)
-	</div>
-	<div class="editor-label">
-	 @Html.LabelFor(model => model.DateCreated)
-	</div>
-	<div class="editor-field">
-	 @Html.DisplayFor(model => model.DateCreated, new { maxLength = 10})
-	 @Html.ValidationMessageFor(model => model.DateCreated)
-	</div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name, new { maxLength = 100 })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            Activities
+        </div>
+        <div class="editor-field">            
+            @Html.Action("ActivityChildrenField", new { id = @Model.ID })
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreatedBy)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.CreatedBy, new { maxLength = 10 })
+            @Html.ValidationMessageFor(model => model.CreatedBy)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateCreated)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.DateCreated, new { maxLength = 10 })
+            @Html.ValidationMessageFor(model => model.DateCreated)
+        </div>
 
         @Html.HiddenFor(model => model.ID)
 
@@ -50,10 +59,10 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section scripts{ 
+@section scripts{
 
     @Scripts.Render("~/Scripts/jquery.js")
-    @Scripts.Render("~/Scripts/ckeditor/ckeditor.js") 
+    @Scripts.Render("~/Scripts/ckeditor/ckeditor.js")
     @Scripts.Render("~/Scripts/jquery.fancybox.js")
 
     <script type="text/javascript">
@@ -63,6 +72,6 @@
     </script>
 }
 
-@section styles{ 
+@section styles{
     @Styles.Render("~/Content/css/jquery.fancybox.css")
 }
