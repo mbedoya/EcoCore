@@ -137,6 +137,7 @@
     <Compile Include="Models\CampaignUIModel.cs" />
     <Compile Include="Models\ChildrenFieldUIModel.cs" />
     <Compile Include="Models\FileUIModel.cs" />
+    <Compile Include="Models\MenuUIModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebUtilities\Const\AppSettings.cs" />
     <Compile Include="WebUtilities\Misc.cs" />

@@ -1,5 +1,6 @@
 using BusinessManager.Business;
 using BusinessManager.Models;
+using WebSite.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,27 @@ namespace WebSite.Controllers.Admin
             ActivityBO.GetInstance().Create(activity);
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            ActivityBO.GetInstance().Delete(id);
+
+            return Json(new { success=true }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult TaskChildrenField(int id)
+        {
+            int count = ActivityBO.GetInstance().GetTaskCount(id);
+
+            ChildrenFieldUIModel model = new ChildrenFieldUIModel()
+            {
+                ID = id,
+                Count = count,
+                ClassName = "Task"
+            };
+
+            return View("ChildrenField", model);
         }
     }
 }

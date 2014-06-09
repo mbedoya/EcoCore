@@ -5,17 +5,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Utilities;
+using System.Web;
 
 namespace BusinessManager.Business
 {
     public class BaseMenuBO
     {
-        public List<MenuDataModel> GetAll()
+        public virtual List<MenuDataModel> GetAll(int id=0)
         {
             return MenuDAL.GetAll();
         }
 
-        public MenuDataModel Get(int id)
+        public virtual MenuDataModel Get(int id)
         {
             return MenuDAL.Get(id);
         }
@@ -29,13 +30,22 @@ namespace BusinessManager.Business
             else
             {
                 throw new Exception("Page not found");
-            }
-            
+            }            
         }
 
-        public void Create(MenuDataModel menu)
+        public virtual void Create(MenuDataModel menu)
         {
             MenuDAL.Create(menu);
+        }
+
+        public virtual void Delete(int id)
+        {
+            MenuDAL.Delete(id);
+        }
+
+        public int GetMenuCount(int menuID)
+        {
+            return MenuDAL.GetMenuCount(menuID);
         }
     }
 }

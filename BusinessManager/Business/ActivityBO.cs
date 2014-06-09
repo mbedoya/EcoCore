@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Web;
 using Utilities;
 using Utilities.Security;
+using System.Web;
 
 namespace BusinessManager.Business
 {
@@ -32,6 +32,7 @@ namespace BusinessManager.Business
                 throw new Exception("Session not started");
             }
             activity.CreatedBy = SecurityManager.GetLoggedUser().ID;
+
             activity.DateCreated = DateTime.Now;
 
             if (HttpContext.Current.Session["ParentID"] != null)
@@ -42,9 +43,10 @@ namespace BusinessManager.Business
             base.Create(activity);
         }
 
-        public override List<ActivityDataModel> GetAll(int id)
+
+        public override List<ActivityDataModel> GetAll(int id = 0)
         {
-            if(id > 0)
+            if (id > 0)
             {
                 HttpContext.Current.Session["ParentID"] = id;
                 return GetByWorkflow(id);
@@ -55,10 +57,19 @@ namespace BusinessManager.Business
                 return base.GetAll(id);
             }
         }
-
         public List<ActivityDataModel> GetByWorkflow(int id)
         {
             return ActivityDAL.GetByWorkflow(id);
+        }
+
+        public override void Delete(int id)
+        {
+            if (!SecurityManager.SesionStarted() || SecurityManager.GetLoggedUser().Role != UserRole.Admin)
+            {
+                throw new Exception("Action not allowed");
+            }
+
+            base.Delete(id);
         }
 
     }

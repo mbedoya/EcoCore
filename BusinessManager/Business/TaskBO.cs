@@ -35,11 +35,16 @@ namespace BusinessManager.Business
 
             task.DateCreated = DateTime.Now;
 
+            if (HttpContext.Current.Session["ParentID"] != null)
+            {
+                task.ActivityID = Convert.ToInt32(HttpContext.Current.Session["ParentID"]);
+            }
+
             base.Create(task);
         }
 
 
-        public override List<TaskDataModel> GetAll(int id)
+        public override List<TaskDataModel> GetAll(int id = 0)
         {
             if (id > 0)
             {
@@ -54,7 +59,17 @@ namespace BusinessManager.Business
         }
         public List<TaskDataModel> GetByActivity(int id)
         {
-            return null;
+            return TaskDAL.GetByActivity(id);
+        }
+
+        public override void Delete(int id)
+        {
+            if (!SecurityManager.SesionStarted() || SecurityManager.GetLoggedUser().Role != UserRole.Admin)
+            {
+                throw new Exception("Action not allowed");
+            }
+
+            base.Delete(id);
         }
 
     }

@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Utilities;
+using System.Web;
 
 namespace BusinessManager.Business
 {
     public class BaseActivityBO
     {
-        public virtual List<ActivityDataModel> GetAll(int id)
+        public virtual List<ActivityDataModel> GetAll(int id=0)
         {
             return ActivityDAL.GetAll();
         }
@@ -40,6 +41,16 @@ namespace BusinessManager.Business
             
 
             ActivityDAL.Create(activity);
+        }
+
+        public virtual void Delete(int id)
+        {
+            ActivityDAL.Delete(id);
+        }
+
+        public int GetTaskCount(int activityID)
+        {
+            return ActivityDAL.GetTaskCount(activityID);
         }
     }
 }

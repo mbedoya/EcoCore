@@ -55,6 +55,7 @@
     <Compile Include="Business\BaseWorkflowBO.cs" />
     <Compile Include="Business\CampaignBO.cs" />
     <Compile Include="Business\MenuBO.cs" />
+    <Compile Include="Business\MenuUIModel.cs" />
     <Compile Include="Business\TaskBO.cs" />
     <Compile Include="Business\UserBO.cs" />
     <Compile Include="Business\WorkflowBO.cs" />

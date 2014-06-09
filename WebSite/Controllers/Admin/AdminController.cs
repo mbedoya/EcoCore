@@ -1,4 +1,5 @@
 ﻿using BusinessManager.Business;
+using BusinessManager.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,18 @@ namespace WebSite.Controllers.Admin
 
         public ActionResult Menu()
         {
-            return View(MenuBO.GetInstance().GetAll());
+            List<MenuDataModel> menus = MenuBO.GetInstance().GetParentMenus();
+            List<MenuUIModel> model = new List<MenuUIModel>();
+            foreach (var item in menus)
+            {
+                model.Add(new MenuUIModel()
+                {
+                    Item = item
+                    ,Children = MenuBO.GetInstance().GetByMenu(item.ID)
+                });
+            }
+
+            return View(model);
         }
 
         public ActionResult FileDisplay(string url)

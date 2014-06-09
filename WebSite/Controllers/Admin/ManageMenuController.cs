@@ -1,5 +1,6 @@
 using BusinessManager.Business;
 using BusinessManager.Models;
+using WebSite.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace WebSite.Controllers.Admin
         //
         // GET: /ManageMenu/
 
-        public ActionResult Index()
+        public ActionResult Index(int id=0)
         {
-            return View(MenuBO.GetInstance().GetAll());
+            return View(MenuBO.GetInstance().GetAll(id));
         }
 
         public ActionResult Edit(int id)
@@ -42,6 +43,27 @@ namespace WebSite.Controllers.Admin
             MenuBO.GetInstance().Create(menu);
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            MenuBO.GetInstance().Delete(id);
+
+            return Json(new { success=true }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult MenuChildrenField(int id)
+        {
+            int count = MenuBO.GetInstance().GetMenuCount(id);
+
+            ChildrenFieldUIModel model = new ChildrenFieldUIModel()
+            {
+                ID = id,
+                Count = count,
+                ClassName = "Menu"
+            };
+
+            return View("ChildrenField", model);
         }
     }
 }
