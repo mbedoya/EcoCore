@@ -1,9 +1,23 @@
 ﻿@model WebSite.Models.ForeignKeyUIModel
 
+@{
+    
+    string readOnlyText = "";
+    if(Model.ReadOnly)
+    {
+        readOnlyText = "disabled=\"disabled\"";    
+    }    
+}
 
+<div class="editor-label">
+    @Model.Name
+</div>
+
+<div class="editor-field">
 @if (Model.Collection != null)
 {
-    <select name="@Model.Name" style="width: 200px;">
+    
+    <select name="@Model.Name" style="width: 200px;" @readOnlyText>
         @foreach (var item in @Model.Collection)
         {
             if (Model.Value != null && item.ID == Model.Value)
@@ -21,3 +35,4 @@
 {
     <input type="text" name="@Model.Name" value="@Model.Value" />    
 }
+</div>

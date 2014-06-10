@@ -44,7 +44,7 @@ namespace WebSite.Controllers.Admin
             return View(model);
         }
 
-        public ActionResult ForeignKeyDisplay(string fieldName, int? fieldValue, string primaryTable)
+        public ActionResult ForeignKeyDisplay(string fieldName, int? fieldValue, string primaryTable, bool readOnly)
         {            
             Type t = Type.GetType("BusinessManager.Business." + primaryTable + "BO, BusinessManager");
             List<BaseUIModel> list = null;
@@ -72,6 +72,7 @@ namespace WebSite.Controllers.Admin
             model.Value = fieldValue;
             model.Collection = list;
             model.Name = fieldName;
+            model.ReadOnly = readOnly;
 
             return View(model);
         }
