@@ -8,6 +8,6 @@ namespace WebSite.Models
 {
     public class CampaignUIModel
     {
-        public List<CampaignDataModel> Campaigns { get; set; }
+        public List<CampaignDataModel> Campaigns { get; set; }        
     }
 }

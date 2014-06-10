@@ -35,7 +35,9 @@ namespace WebSite.Controllers
 
         public ActionResult View(int id)
         {
-            CampaignDataModel model = CampaignBO.GetInstance().Get(id);            
+            CampaignDetailUIModel model = new CampaignDetailUIModel();
+            model.Campaign = CampaignBO.GetInstance().Get(id);
+            model.ActivitiesToExecute = CampaignBO.GetInstance().GetCampaignActivities(id);
 
             return View(model);
         }

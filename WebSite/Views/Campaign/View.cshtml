@@ -1,12 +1,158 @@
-﻿@model BusinessManager.Models.CampaignDataModel
+﻿@using System.Web.Optimization
+
+@model WebSite.Models.CampaignDetailUIModel
 
 @{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Name</h2>
+<h2>@Model.Campaign.Name (40% ejecutada) </h2>
 
 <p>
-    Date Started: @Model.DateStarted.ToString("MMM dd yyyy")
+    Date Started: @Model.Campaign.DateStarted.ToString("MMM dd yyyy")
 </p>
+
+<br />
+
+<p>
+    <h3>Activities</h3>
+</p>
+
+<canvas id="processCanvas" width="600" height="150" style="border:0px solid #000000;"></canvas>
+
+@{ int indice = 0; }
+@foreach (var item in @Model.ActivitiesToExecute)
+{    
+    <p style="width: 300px;">
+        @item.Name
+        @if (indice == 0)
+        {
+            <span style="color:green">(Finalizada)</span>
+        }else
+        {
+            if (indice == 01)
+            {
+                <span style="color:#FF6600;">(Ejecutando)</span>
+            }
+            else
+            {
+                <span style="color:gray">(No iniciada)</span>
+            }            
+        }
+        @{ indice++; }
+    </p>
+}
+
+
+
+@section scripts{ 
+
+    @Scripts.Render("~/Scripts/jquery.js")
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+            var canvas = document.getElementById("processCanvas");
+            var context = canvas.getContext("2d");
+
+            x = 80;
+            y = 70;
+            radius = 20;
+
+            context.beginPath();
+            context.arc(x, y, radius, 0, 2 * Math.PI, false);
+            context.fillStyle = 'green';
+            context.fill();
+            context.lineWidth = 3;
+            context.strokeStyle = '#003300';
+            context.stroke();
+            
+            context.fillStyle = 'black';
+            context.font = "11px Arial";
+            context.fillText("Crear Documento Base", x - radius - 35, y + radius + 15);
+
+            context.moveTo(x + radius, y + radius / 4);
+            context.lineTo(200, y + radius / 4);
+            context.stroke();
+
+            context.moveTo(200 - 10, y + radius / 4 - 10);
+            context.lineTo(200, y + radius / 4);
+            context.stroke();
+
+            context.moveTo(200 - 10, y + radius / 4 + 10);
+            context.lineTo(200, y + radius / 4);
+            context.stroke();
+
+            x = 230;
+            y = 70;
+            radius = 30;
+
+            context.beginPath();
+            context.arc(x, y, radius, 0, 2 * Math.PI, false);
+            context.fillStyle = '#FF6600';
+            context.fill();
+            context.lineWidth = 3;
+            context.strokeStyle = '#003300';
+            context.stroke();            
+
+            context.fillStyle = 'black';
+            context.fillText("Enviar Propuesta al Cliente", x - radius - 35, y + radius + 15);
+
+            context.moveTo(x + radius, y + radius / 4);
+            context.lineTo(350, y + radius / 4);
+            context.stroke();
+
+            context.moveTo(350 - 10, y + radius / 4 - 10);
+            context.lineTo(350, y + radius / 4);
+            context.stroke();
+            
+            context.moveTo(350 - 10, y + radius / 4 + 10);
+            context.lineTo(350, y + radius / 4);
+            context.stroke();
+
+            x = 370;
+            y = 70;
+            radius = 20;
+
+            context.beginPath();
+            context.arc(x, y, radius, 0, 2 * Math.PI, false);
+            context.fillStyle = 'gray';
+            context.fill();
+            context.lineWidth = 3;
+            context.strokeStyle = '#003300';
+            context.stroke();
+
+            context.fillStyle = 'black';
+            context.fillText("Revisión Técnica doc", x - radius - 35, y + radius + 15);
+
+            context.moveTo(x + radius, y + radius / 4);
+            context.lineTo(480, y + radius / 4);
+            context.stroke();
+
+            context.moveTo(480 - 10, y + radius / 4 - 10);
+            context.lineTo(480, y + radius / 4);
+            context.stroke();
+
+            context.moveTo(480 - 10, y + radius / 4 + 10);
+            context.lineTo(480, y + radius / 4);
+            context.stroke();
+
+            x = 500;
+            y = 70;
+            radius = 20;
+
+            context.beginPath();
+            context.arc(x, y, radius, 0, 2 * Math.PI, false);
+            context.fillStyle = 'gray';
+            context.fill();
+            context.lineWidth = 3;
+            context.strokeStyle = '#003300';
+            context.stroke();
+
+            context.fillStyle = 'black';
+            context.fillText("Aprobación ciente", x - radius - 35, y + radius + 15);
+
+        });
+    </script>
+}

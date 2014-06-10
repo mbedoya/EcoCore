@@ -47,7 +47,9 @@ namespace BusinessManager.Business
             base.Update(campaign);
         }
 
-
-
+        public List<ActivityDataModel> GetCampaignActivities(int id)
+        {
+            return CampaignDAL.GetCampaignActivities(id);
+        }
     }
 }
