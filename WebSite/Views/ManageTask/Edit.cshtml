@@ -41,14 +41,14 @@
 	 @Html.LabelFor(model => model.AssignedTo)
 	</div>
 	<div class="editor-field">
-	 @Html.EditorFor(model => model.AssignedTo, new { maxLength = 10})
+        @{ Html.RenderAction("ForeignKeyDisplay", "Admin", new { fieldName = "AssignedTo", fieldValue = @Model.AssignedTo, primaryTable = "User" }); }	 
 	 @Html.ValidationMessageFor(model => model.AssignedTo)
 	</div>
 	<div class="editor-label">
 	 @Html.LabelFor(model => model.ActivityID)
 	</div>
 	<div class="editor-field">
-	 @Html.EditorFor(model => model.ActivityID, new { maxLength = 10})
+	 @{ Html.RenderAction("ForeignKeyDisplay", "Admin", new { fieldName = "ActivityID", fieldValue = @Model.ActivityID, primaryTable="Activity" }); }
 	 @Html.ValidationMessageFor(model => model.ActivityID)
 	</div>
 	<div class="editor-label">

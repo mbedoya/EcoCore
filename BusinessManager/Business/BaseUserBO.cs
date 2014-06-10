@@ -10,7 +10,7 @@ namespace BusinessManager.Business
 {
     public class BaseUserBO
     {
-        public List<UserDataModel> GetAll()
+        public List<UserDataModel> GetAll(int id = 0)
         {
             return UserDAL.GetAll();
         }

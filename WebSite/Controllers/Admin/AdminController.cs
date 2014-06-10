@@ -1,6 +1,7 @@
 ﻿using BusinessManager.Business;
 using BusinessManager.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -39,6 +40,38 @@ namespace WebSite.Controllers.Admin
         {
             FileUIModel model = new FileUIModel();
             model.URL = url;
+
+            return View(model);
+        }
+
+        public ActionResult ForeignKeyDisplay(string fieldName, int? fieldValue, string primaryTable)
+        {            
+            Type t = Type.GetType("BusinessManager.Business." + primaryTable + "BO, BusinessManager");
+            List<BaseUIModel> list = null;
+
+            if (t != null)
+            {
+                object instance = t.GetMethod("GetInstance").Invoke(null, null);
+                object[] parametersArray = new object[] { 0 };
+                var collection = (IEnumerable)t.GetMethod("GetAll").Invoke(instance, parametersArray);
+
+                list = new List<BaseUIModel>();
+
+
+                foreach (var item in collection)
+                {
+                    list.Add(new BaseUIModel()
+                    {
+                        ID = Convert.ToInt32(item.GetType().GetProperty("ID").GetValue(item, null)),
+                        Name = Convert.ToString(item.GetType().GetProperty("Name").GetValue(item, null))
+                    });
+                }
+            }            
+
+            ForeignKeyUIModel model = new ForeignKeyUIModel();
+            model.Value = fieldValue;
+            model.Collection = list;
+            model.Name = fieldName;
 
             return View(model);
         }
