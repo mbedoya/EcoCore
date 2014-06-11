@@ -32,8 +32,8 @@
             @Html.DisplayFor(model => model.DateCreated, new { maxLength = 10 })
             @Html.ValidationMessageFor(model => model.DateCreated)
         </div>
-        @{ Html.RenderAction("ForeignKeyDisplay", "Admin", new { fieldName = "AssignedTo", fieldValue = @Model.AssignedTo, primaryTable = "User", readOnly = false }); }
-        @{ Html.RenderAction("ForeignKeyDisplay", "Admin", new { fieldName = "ActivityID", fieldValue = @Model.ActivityID, primaryTable = "Activity", readOnly = false }); }
+        @{ Html.RenderAction("ForeignKeyDisplay", "Admin", new { fieldName = "Responsable", fieldValue = @Model.AssignedTo, primaryTable = "User", readOnly = false }); }
+        @{ Html.RenderAction("ForeignKeyDisplay", "Admin", new { fieldName = "Actividad", fieldValue = @Model.ActivityID, primaryTable = "Activity", readOnly = false }); }
         <div class="editor-label">
             @Html.LabelFor(model => model.Comments)
         </div>

@@ -1,0 +1,74 @@
+@using System.Web.Optimization
+
+@model BusinessManager.Models.FormdetailDataModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Crear Detalle de Formulario</h2>
+
+@using ( Html.BeginForm(null, null, FormMethod.Post ,new { enctype = "multipart/form-data" })) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend></legend>
+
+        
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.Name)
+	</div>
+	<div class="editor-field">
+	 @Html.EditorFor(model => model.Name, new { maxLength = 50 })
+	 @Html.ValidationMessageFor(model => model.Name)
+	</div>
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.FieldType)
+	</div>
+	<div class="editor-field">
+	 @Html.EditorFor(model => model.FieldType, new { maxLength = 20 })
+	 @Html.ValidationMessageFor(model => model.FieldType)
+	</div>
+	<div class="editor-label">
+	 @Html.LabelFor(model => model.TableName)
+	</div>
+	<div class="editor-field">
+	 @Html.EditorFor(model => model.TableName, new { maxLength = 50 })
+	 @Html.ValidationMessageFor(model => model.TableName)
+	</div>
+	 @{ Html.RenderAction("ForeignKeyDisplay", "Admin", new { fieldName = "FormID", fieldValue = @Model != null ? @Model.FormID : 0, primaryTable = "Form", readOnly = false }); }
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @if (Session["ParentID"] != null)
+    {
+    @Html.ActionLink("Back to List", "Index", new { id = Convert.ToInt32(Session["formdetailParentID"]) })    
+    }
+    else
+    {
+    @Html.ActionLink("Back to List", "Index")
+    }
+</div>
+
+@section scripts{ 
+
+    @Scripts.Render("~/Scripts/jquery.js")
+    @Scripts.Render("~/Scripts/ckeditor/ckeditor.js") 
+    @Scripts.Render("~/Scripts/jquery.fancybox.js")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.fancybox').fancybox();
+        });
+    </script>
+}
+
+@section styles{ 
+    @Styles.Render("~/Content/css/jquery.fancybox.css")
+}

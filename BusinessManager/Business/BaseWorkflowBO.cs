@@ -10,7 +10,7 @@ namespace BusinessManager.Business
 {
     public class BaseWorkflowBO
     {
-        public List<WorkflowDataModel> GetAll()
+        public List<WorkflowDataModel> GetAll(int id=0)
         {
             return WorkflowDAL.GetAll();
         }

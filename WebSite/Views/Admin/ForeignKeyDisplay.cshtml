@@ -18,6 +18,7 @@
 {
     
     <select name="@Model.Name" style="width: 200px;" @readOnlyText>
+        <option>--Seleccione--</option>
         @foreach (var item in @Model.Collection)
         {
             if (Model.Value != null && item.ID == Model.Value)

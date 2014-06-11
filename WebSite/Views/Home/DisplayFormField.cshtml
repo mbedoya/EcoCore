@@ -1,0 +1,32 @@
+﻿@model BusinessManager.Models.FormdetailDataModel
+
+<div class="label">
+    @Model.Name
+</div>
+
+<div class="field">
+@if (Model.FieldType == "texto")
+{
+    <input type="text" id="@Model.Name" />
+}
+else
+{
+    if (Model.FieldType == "numero")
+    {
+        <input type="number" id="@Model.Name" />
+    }
+    else
+    {
+        if (Model.FieldType == "archivo")
+        {
+            <input type="file" id="@Model.Name" />
+            { Html.RenderAction("FileDisplay", "Admin", new { url = "" }); }
+        }
+        else
+        {    
+            <input type="text" id="@Model.Name" />
+        }
+    }
+}
+
+</div>

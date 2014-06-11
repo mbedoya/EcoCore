@@ -39,7 +39,7 @@ namespace WebSite.Models
                 }
                 else
                 {
-                    type = FileType.None;
+                    type = FileType.File;
                 }
                 
                 url = value;

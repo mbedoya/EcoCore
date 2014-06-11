@@ -124,12 +124,17 @@
     <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Admin\ManageActivityController.cs" />
     <Compile Include="Controllers\Admin\ManageCampaignController.cs" />
+    <Compile Include="Controllers\Admin\ManageFormController.cs" />
+    <Compile Include="Controllers\Admin\ManageFormdetailController.cs" />
     <Compile Include="Controllers\Admin\ManageMenuController.cs" />
+    <Compile Include="Controllers\Admin\ManageRoleController.cs" />
     <Compile Include="Controllers\Admin\ManageTaskController.cs" />
     <Compile Include="Controllers\Admin\ManageUserController.cs" />
+    <Compile Include="Controllers\Admin\ManageUserroleController.cs" />
     <Compile Include="Controllers\Admin\ManageWorkflowController.cs" />
     <Compile Include="Controllers\Admin\SecurityController.cs" />
     <Compile Include="Controllers\CampaignController.cs" />
+    <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -140,6 +145,7 @@
     <Compile Include="Models\ChildrenFieldUIModel.cs" />
     <Compile Include="Models\FileUIModel.cs" />
     <Compile Include="Models\ForeignKeyUIModel.cs" />
+    <Compile Include="Models\FormUIModel.cs" />
     <Compile Include="Models\MenuUIModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebUtilities\Const\AppSettings.cs" />
@@ -553,6 +559,35 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\ForeignKeyDisplay.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ManageFormdetail\Create.cshtml" />
+    <Content Include="Views\ManageFormdetail\Edit.cshtml" />
+    <Content Include="Views\ManageFormdetail\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ManageForm\Create.cshtml" />
+    <Content Include="Views\ManageForm\Edit.cshtml" />
+    <Content Include="Views\ManageForm\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Form\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Form\View.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\DisplayFormField.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ManageRole\Create.cshtml" />
+    <Content Include="Views\ManageRole\Edit.cshtml" />
+    <Content Include="Views\ManageRole\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ManageUserrole\Create.cshtml" />
+    <Content Include="Views\ManageUserrole\Edit.cshtml" />
+    <Content Include="Views\ManageUserrole\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

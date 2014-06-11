@@ -45,3 +45,20 @@ fieldset input[type=submit]{
 .main-content p {
     margin-top: 10px;
 }
+
+.form .label {
+    width: 100px !important;
+    margin: 10px 10px 0px 10px;
+    font-size: 12px;
+}
+
+.form .field {
+    width: 200px !important;
+    margin: 10px 10px 10px 10px;
+    font-size: 12px;
+    float:left;
+}
+
+.form input {
+    float: left;
+}
